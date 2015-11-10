@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', 'WebPlataform.views.home', name='home'),
     url(r'^pacientes/$', 'WebPlataform.views.pacientes', name='pacientes'),
     url(r'^medicos/$', 'WebPlataform.views.medicos', name='medicos'),
+    url(r'^registros/$', 'WebPlataform.views.registros', name='registros'),
 ]
 
 if settings.DEBUG:

@@ -32,7 +32,8 @@
                     <li class="active"><a href="{% url 'home'%}">Inicio</a></li>
                     <li><a href="#about">Editar Perfil</a></li>
                     <li><a href="#contact">Gestionar Registros</a></li>
-                    <li><a href="#contact">Importar Registros</a></li>
+                    <li><a data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@mdo" href="#">Importar Registros</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -47,10 +48,6 @@
             <p class="lead">En la barra superior se encuentran las opciones que tiene la plataforma</p>
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                data-whatever="@mdo">Importar Registro
-        </button>
-
         <script src="{% static 'js/modal.js' %}"></script>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -62,15 +59,15 @@
                         <h4 class="modal-title" id="exampleModalLabel">Registro EEG</h4>
                     </div>
                     <div class="modal-body">
-                        <form method="POST">
+                        <!-- Upload form. Note enctype attribute! -->
+                        <form action="{% url "registros" %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <input class='btn btn-primary' type="submit" value="Sign Up"/>
+                            <button type="submit" class="btn btn-primary">Importar</button>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Importar</button>
                     </div>
                 </div>
             </div>

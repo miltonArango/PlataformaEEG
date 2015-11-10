@@ -34,7 +34,7 @@ class RegistroEEG(models.Model):
 
     fecha_registro = models.DateTimeField(auto_now_add=True, auto_now=False)
     paciente = models.ForeignKey(Paciente)
-    archivo_registro = models.FileField(upload_to="/registrosEEG/Pacientes/")
+    archivo_registro = models.FileField(upload_to="registrosEEG/Pacientes/")
 
     def __unicode__(self):
         return self.paciente.docId
