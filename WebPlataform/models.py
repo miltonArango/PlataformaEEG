@@ -14,7 +14,7 @@ class Paciente(models.Model):
     modificacion = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __unicode__(self):
-        return self.docId
+        return self.nombre_completo + ": " +self.docId
 
 
 class Medico(models.Model):
@@ -35,6 +35,7 @@ class RegistroEEG(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True, auto_now=False)
     paciente = models.ForeignKey(Paciente)
     archivo_registro = models.FileField(upload_to="registrosEEG/Pacientes/")
+    comentario = models.CharField(max_length=120,  blank=True, null=True)
 
     def __unicode__(self):
         return self.paciente.docId

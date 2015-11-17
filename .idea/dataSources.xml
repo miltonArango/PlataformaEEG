@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2657934440">
+  <component name="DataSourceManagerImpl" format="xml" hash="1150267635">
     <data-source source="LOCAL" name="PostgreSQL - EEGSiteDatabase@localhost" uuid="60c0df5e-c237-4dbb-a0c5-10b2c732462c">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

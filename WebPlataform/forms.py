@@ -19,7 +19,6 @@ class RegistroEEGForm(forms.ModelForm):
 
     class Meta:
         model = RegistroEEG
-        fields = ["paciente", "archivo_registro"]
-    #registro = forms.FileField(label="Seleccione el archivo de registro", help_text="Formato .mat")
+        fields = ["paciente", "archivo_registro", "comentario"]
 
 
