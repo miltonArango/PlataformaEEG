@@ -1,7 +1,8 @@
+from django.core.files import File
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from matplotlib import pylab
-from PIL import Image
+from mlab.releases import latest_release as matlab
+import time
 # Create your views here.
 from .forms import PacienteForm, RegistroEEGForm
 from .models import RegistroEEG, Paciente
@@ -45,7 +46,18 @@ def registros(request):
     if request.method == 'POST':
         form = RegistroEEGForm(request.POST, request.FILES)
         if form.is_valid():
+            time.sleep(1)
+            instance = form.save(commit=False)
+            pac = instance.paciente.id
+            print pac
+            assert type(pac) == int
+            matlab.path(matlab.path(), 'D:\Registros')
+            matlab.generarGrafica2(pac)
+
+            directory = 'Pacientes/Paciente%s/Registro%s.png' % (pac, pac)
+            instance.archivo_registro = directory
             form.save()
+
             render(request, "registros.html", {})
     else:
         form = RegistroEEGForm() # A empty, unbound form
@@ -59,9 +71,4 @@ def registros(request):
         {'registros': registros_eeg, 'form': form},
         context_instance=RequestContext(request)
     )
-
-
-def registroDinamico(request):
-    # Generate 'png' image form .mat data
-    pass
 
